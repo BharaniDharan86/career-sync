@@ -1,7 +1,9 @@
+import { API } from "../utils/constants";
+
 export const getAllJobPost = async (token, searchText) => {
   console.log(searchText);
   const response = await fetch(
-    `http://localhost:3000/api/v1/jobinfo?searchTerm=${searchText}`,
+    `${API}/api/v1/jobinfo?searchTerm=${searchText}`,
     {
       method: "GET",
       headers: {
@@ -15,7 +17,7 @@ export const getAllJobPost = async (token, searchText) => {
 };
 
 export const getSingleJobPost = async (id, token) => {
-  const response = await fetch(`http://localhost:3000/api/v1/jobinfo/${id}`, {
+  const response = await fetch(`${API}/api/v1/jobinfo/${id}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -33,7 +35,7 @@ export const applyJob = async (id, token) => {
   const yoe = {
     yearsOfExperience: 2,
   };
-  const response = await fetch(`http://localhost:3000/api/v1/apply/${id}`, {
+  const response = await fetch(`${API}/api/v1/apply/${id}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,

@@ -1,6 +1,6 @@
+import { API } from "../utils/constants";
+
 export default async function getMyPostedJobs(token) {
-
-
   const response = await fetch("http://localhost:3000/api/v1/jobinfo/myjobs", {
     method: "GET",
     headers: {
@@ -14,7 +14,7 @@ export default async function getMyPostedJobs(token) {
 }
 
 export async function postNewJob(jobDetails, token) {
-  const response = await fetch("http://localhost:3000/api/v1/jobinfo", {
+  const response = await fetch(`${API}/api/v1/jobinfo`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -24,7 +24,6 @@ export async function postNewJob(jobDetails, token) {
   });
 
   const data = await response.json();
-  
 
   if (data.status === "failed") throw new Error(data.message);
 

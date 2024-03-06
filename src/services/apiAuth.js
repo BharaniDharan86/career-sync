@@ -1,15 +1,14 @@
+import { API } from "../utils/constants";
+
 export const verifyEmail = async function (body) {
-  const response = await fetch(
-    "http://localhost:3000/api/v1/users/verifyemail",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-      credentials: "include",
-    }
-  );
+  const response = await fetch(`${API}/api/v1/users/verifyemail`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+    credentials: "include",
+  });
 
   const data = await response.json();
 
@@ -19,7 +18,7 @@ export const verifyEmail = async function (body) {
 };
 
 export const signUp = async function (otp) {
-  const response = await fetch("http://localhost:3000/api/v1/users/signup", {
+  const response = await fetch(`${API}/api/v1/users/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,8 +35,7 @@ export const signUp = async function (otp) {
 };
 
 export const login = async function (userData) {
-  console.log(userData);
-  const response = await fetch("http://localhost:3000/api/v1/users/login", {
+  const response = await fetch(`${API}/api/v1/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
